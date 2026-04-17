@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import data from "./data/libraryData.json"; // ✅ IMPORT JSON
 
 export default function LibraryForm() {
   const [formData, setFormData] = useState({
@@ -8,19 +9,40 @@ export default function LibraryForm() {
     membershipType: "",
   });
 
+  const [members, setMembers] = useState(data.members); // ✅ LOAD DATA
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted Data:", formData);
+
+    const newMember = {
+      id: members.length + 1,
+      ...formData,
+    };
+
+    const updatedMembers = [...members, newMember];
+
+    setMembers(updatedMembers); // ✅ update UI
+    console.log("Updated Members:", updatedMembers);
+
     alert("Form submitted successfully!");
+
+    // reset form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      membershipType: "",
+    });
   };
 
   return (
     <div className="p-6 max-w-md mx-auto bg-white rounded-2xl shadow-md">
       <h2 className="text-xl font-bold mb-4">Library Subscription Form</h2>
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
@@ -72,31 +94,18 @@ export default function LibraryForm() {
           Submit
         </button>
       </form>
+
+      {/* ✅ Display Members */}
+      <div className="mt-6">
+        <h3 className="font-bold">Member List</h3>
+        <ul>
+          {members.map((m) => (
+            <li key={m.id}>
+              {m.name} - {m.membershipType}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
-
-// Sample Dataset (JSON)
-export const sampleDataset = [
-  {
-    id: 1,
-    name: "Rahul Sharma",
-    email: "rahul@example.com",
-    phone: "9876543210",
-    membershipType: "premium",
-  },
-  {
-    id: 2,
-    name: "Priya Patel",
-    email: "priya@example.com",
-    phone: "9123456780",
-    membershipType: "standard",
-  },
-  {
-    id: 3,
-    name: "Amit Kumar",
-    email: "amit@example.com",
-    phone: "9988776655",
-    membershipType: "basic",
-  },
-];

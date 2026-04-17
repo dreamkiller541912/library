@@ -1,0 +1,59 @@
+{
+  "library": {
+    "name": "City Central Library",
+    "location": "Valsad, Gujarat",
+    "contact": "02632-123456"
+  },
+  "members": [
+    {
+      "id": 1,
+      "name": "Rahul Sharma",
+      "email": "rahul@example.com",
+      "phone": "9876543210",
+      "address": "Valsad, Gujarat",
+      "membershipType": "premium",
+      "joinDate": "2026-01-15",
+      "expiryDate": "2027-01-14",
+      "paymentStatus": "paid"
+    },
+    {
+      "id": 2,
+      "name": "Priya Patel",
+      "email": "priya@example.com",
+      "phone": "9123456780",
+      "address": "Vapi, Gujarat",
+      "membershipType": "standard",
+      "joinDate": "2026-02-10",
+      "expiryDate": "2027-02-09",
+      "paymentStatus": "paid"
+    },
+    {
+      "id": 3,
+      "name": "Amit Kumar",
+      "email": "amit@example.com",
+      "phone": "9988776655",
+      "address": "Surat, Gujarat",
+      "membershipType": "basic",
+      "joinDate": "2026-03-05",
+      "expiryDate": "2026-09-04",
+      "paymentStatus": "pending"
+    }
+  ],
+  "membershipPlans": [
+    {
+      "type": "basic",
+      "durationMonths": 6,
+      "price": 500
+    },
+    {
+      "type": "standard",
+      "durationMonths": 12,
+      "price": 900
+    },
+    {
+      "type": "premium",
+      "durationMonths": 12,
+      "price": 1500
+    }
+  ]
+}
